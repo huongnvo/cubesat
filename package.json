@@ -1,0 +1,22 @@
+{
+  "name": "CubeSat-SETool",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Huong Vo",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "0.8.5",
+    "body-parser": "1.13.2",
+    "ejs": "2.3.2",
+    "express": "3.2.6",
+    "jsonwebtoken": "5.0.4",
+    "mongodb": "2.0.35",
+    "mongojs": "^1.0.1",
+    "mongoose": "2.0.35",
+    "morgan": "1.6.1",
+    "sweetalert": "^1.1.0"
+  }
+}
