@@ -7,340 +7,273 @@ var RequirementsFactory = function(Schema,mongoose,tree) {
 	this.createSchemas = function() {
 		var ProductSchema = new this.Schema({
 			name: String,
-			description: String
 		});
 		ProductSchema.plugin(tree);
 		this.product = mongoose.model('product', ProductSchema);
 	}
 
-	var object;
 	this.insertPart = function() {
-		object = new this.product({
+		this.object = new this.product({
 			name: 'root',
-			description: ''
 		});
 
 		var tier0 = new this.product({
-			name: 'CubeSat',
-			description: 'Low-Earth Orbit CubeSat',
+			name: 'HuskySat',
 		});
 
 		var part1 = new this.product({
 			name: 'CDH',
-			description: 'Command & Data Handling Subsystem'
 		});
 
 		var cdhsubpart1 = new this.product({
 			name: 'Main Flight Computer',
-			description: ''
 		});
 
 		var cdhsubpart2 = new this.product({
 			name: 'Peripheral Subsystem Monitoring',
-			description: ''
 		});
 
 		var cdhssubpart1 = new this.product({
 			name: 'Non-Volatile Memory',
-			description: ''
 		});
 
 		var cdhssubpart1b = new this.product({
 			name: 'Main Processor',
-			description: ''
 		});
 
 		var cdhssubpart2 = new this.product({
 			name: 'Peripheral Microcontrollers',
-			description: ''
 		});
 
 		var cdhssubpart3 = new this.product({
 			name: 'Health-Monitoring Sensors',
-			description: ''
 		});
 
 		var cdhssubpart4 = new this.product({
 			name: 'I2C Bus Line',
-			description: ''
 		});
 
 		var cdhsssubpart1 = new this.product({
 			name: 'PPT Controller',
-			description: ''
 		});
 
 		var cdhsssubpart2 = new this.product({
 			name: 'Communication Controller',
-			description: ''
 		});
 
 		var cdhsssubpart3 = new this.product({
 			name: 'ADCS Controller',
-			description: ''
 		});
 
 		var part2 = new this.product({
 			name: 'ADCS',
-			description: 'Attitude Determination & Control Subsystem'
 		});
 
 		var adcssubpart1 = new this.product({
 			name: 'Attitude Determination',
-			description: ''
 		});
 
 		var adcssubpart2 = new this.product({
 			name: 'Attitude Control',
-			description: ''
 		});
 
 		var adcsssubpart1 = new this.product({
 			name: 'Positioning Sensor',
-			description: ''
 		});
 
 		var adcsssubpart2 = new this.product({
 			name: 'Attitude Sensors',
-			description: ''
 		});
 
 		var adcsssubpart3 = new this.product({
 			name: 'Estimation Algorithm',
-			description: ''
 		});
 
 		var adcsssubpart4 = new this.product({
 			name: 'Magnetorquers',
-			description: ''
 		});
 
 		var adcsssubpart5 = new this.product({
 			name: "Reaction Wheels",
-			description: ''
 		});
 
 		var adcsssubpart6 = new this.product({
 			name: 'Control Algorithm',
-			description: ''
 		});
 
 		var adcssssubpart1 = new this.product({
 			name: 'Magnetometers',
-			description: ''
 		});
 
 		var adcssssubpart2 = new this.product({
 			name: 'Photodiodes',
-			description: ''
 		});
 
 		var adcssssubpart3 = new this.product({
 			name: 'Sun Sensors',
-			description: ''
 		});
 
 		var adcssssubpart4 = new this.product({
 			name: 'Actuator', 
-			description: ''
 		});
 
 		var adcssssubpart5 = new this.product({
 			name: 'Driver',
-			description: ''
 		});
 
 		var adcssssubpart6 = new this.product({
 			name: 'Motor',
-			description: ''
 		});
 
 		var adcssssubpart7 = new this.product({
 			name: 'Controller',
-			description: ''
 		});
 
 		var part3 = new this.product({
 			name: 'PS',
-			description: 'Propulsion Subsystem'
 		});
 
 		var pssubpart1 = new this.product({
 			name: 'Electrodes',
-			description: ''
 		});
 
 		var pssubpart2 = new this.product({
 			name: 'Primary Discharge Electronics',
-			description: ''
 		});
 
 		var pssubpart3 = new this.product({
 			name: 'Fuel Source',
-			description: ''
 		});
 
 		var pssubpart4 = new this.product({
 			name: 'Frame/Body',
-			description: ''
 		});
 
 		var pssubpart5 = new this.product({
 			name: 'Igniter Electronics',
-			description: ''
 		});
 
 		var pssubpart6 = new this.product({
 			name: 'Energy Storage System',
-			description: ''
 		});
 
 		var part4 = new this.product({
 			name: 'TS',
-			description: 'Thermal & Structures'
 		});
 
 		var tssubpart1 = new this.product({
 			name: 'Thermal and Electrical Management',
-			description: ''
 		});
 
 		var tssubpart2 = new this.product({
 			name: 'CubeSat Chassis',
-			description: ''
 		});
 
 		var tssubpart3 = new this.product({
 			name: 'Deployables',
-			description: ''
 		});
 
 		var tsssubpart1 = new this.product({
 			name: 'Antennas',
-			description: ''
 		});
 
 		var tsssubpart2 = new this.product({
 			name: 'Solar Panels',
-			description: ''
 		});
 
 		var part5 = new this.product({
 			name: 'COM',
-			description: 'Communication Subsystem'
 		});
 
 		var comsubpart1 = new this.product({
 			name: 'Low-Freq (Comm1)',
-			description: ''
 		});
 
 		var comsubpart2 = new this.product({
 			name: 'High-Freq (Comm2)',
-			description: ''
 		});
 
 		var comssubpart1 = new this.product({
 			name: 'Antenna',
-			description: ''
 		});
 
 		var comssubpart2 = new this.product({
 			name: 'Transceiver',
-			description: ''
 		});
 
 		var comssubpart3 = new this.product({
 			name: 'K-Band Patch Antenna',
-			description: ''
 		});
 
 		var comssubpart4 = new this.product({
 			name: 'RF Electronics',
-			description: ''
 		});
 
 		var comssubpart5 = new this.product({
 			name: 'Reflectarray',
-			description: ''
 		});
 
 		var comsssubpart1 = new this.product({
 			name: 'Analog PCB',
-			description: ''
 		});
 
 		var comsssubpart2 = new this.product({
 			name: 'RF Baseband PCB',
-			description: ''
 		});
 
 		var comsssubpart3 = new this.product({
 			name: 'Control PCB',
-			description: ''
 		});
 
 		var part6 = new this.product({
 			name: 'EPS',
-			description: 'Electrical Power Subsystem'
 		});
 
 		var epssubpart1 = new this.product({
 			name: 'Power Collection',
-			description: ''
 		});
 
 		var epssubpart2 = new this.product({
 			name: 'Power Distribution',
-			description: ''
 		});
 
 		var epssubpart3 = new this.product({
 			name: 'Power Storage',
-			description: ''
 		});
 
 		var epsssubpart1 = new this.product({
 			name: 'Solar Panels',
-			description: ''
 		});
 
 		var epsssubpart2 = new this.product({
 			name: 'Solar Panel Regulators',
-			description: ''
 		});
 
 		var epsssubpart3 = new this.product({
 			name: 'DC/DC Converters',
-			description: ''
 		});
 
 		var epsssubpart4 = new this.product({
 			name: 'Power Rail/Spacecraft Bus',
-			description: ''
 		});
 
 		var epsssubpart5 = new this.product({
 			name: 'Batteries',
-			description: ''
 		});
 
 		var epsssubpart6 = new this.product({
 			name: 'Maximum Power Point Tracker',
-			description: ''
 		});
 
 		var epssssubpart1 = new this.product({
 			name: 'Relay/Switches',
-			description: ''
 		});
 
 		var epssssubpart2 = new this.product({
 			name: 'Fuses',
-			description: ''
 		});		
 
-		tier0.parent = object;
+		tier0.parent = this.object;
 		part1.parent = tier0;
 		cdhsubpart1.parent = part1;
 		cdhsubpart2.parent = part1;
@@ -402,15 +335,20 @@ var RequirementsFactory = function(Schema,mongoose,tree) {
 		epssubpart2.parent = part6;
 		epssubpart3.parent = part6;
 		epsssubpart1.parent = epssubpart1;
-		epsssubpart1.parent = epssubpart1;
-		epsssubpart1.parent = epssubpart2;
-		epsssubpart1.parent = epssubpart2;
-		epsssubpart1.parent = epssubpart3;
-		epsssubpart1.parent = epssubpart3;
+		epsssubpart2.parent = epssubpart1;
+		epsssubpart3.parent = epssubpart2;
+		epsssubpart4.parent = epssubpart2;
+		epsssubpart5.parent = epssubpart3;
+		epsssubpart6.parent = epssubpart3;
 		epssssubpart1.parent = epsssubpart4;
 		epssssubpart2.parent = epsssubpart4;
 
-		object.save(function() {
+		var args = [{
+			filters: {'name': 'CubeSat'},
+			recursive: true,
+			minLevel: 5
+		}];
+		this.object.save(function() {
 			tier0.save(function() {
 				part1.save(function() {
 					cdhsubpart1.save(function() {
@@ -498,7 +436,7 @@ var RequirementsFactory = function(Schema,mongoose,tree) {
 					});
 				});
 			});
-		});
+		});	
 	};
 
 	this.getAll = function(query, res) {
@@ -507,25 +445,50 @@ var RequirementsFactory = function(Schema,mongoose,tree) {
 		});
 	};
 
-	this.getPartByName = function(query, res) {
+	this.getRoot = function(query, res) {
 		var args = [{
-						filters: {'name': 'CubeSat'},
+						filters: {'name': 'root'},
 						recursive: true,
 						minLevel: 5
 					}];
-		object.getChildrenTree(args, function(err, users) {
+		this.object.getChildrenTree(args, function(err, users) {
 			res.json(users);
 		});
 	};
 
+	this.getPartById = function(query, res) {
+		this.attitude_parts.find({_id: query.params._id}, function(error,output) {
+			res.json(output);
+		});
+	};
+
 	this.putPart = function(req, res) {
+		var args = [{
+			filters: {'name': 'CubeSat'},
+			recursive: true,
+			minLevel: 5
+		}];
+		this.object.getChildrenTree(args, function(err, users) {
+			console.log(JSON.stringify(users));
+			res.json(users);
+		}) 
 	};
 
 	this.updatePart = function(req, res) {
 	};
 
 	this.removePart = function(req, res) {
+		this.product.remove({_id: query.params._id}, function(err, output) {
+			if (err)
+				res.send(outout);
+			res.json({message: 'Successfully deleted'});
+		});
 	};
+
+	this.removeAll = function() {
+		this.product.remove({}, function(err, output) {
+		});
+	}
 }
 
 module.exports = RequirementsFactory;

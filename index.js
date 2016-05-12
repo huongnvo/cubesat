@@ -50,21 +50,26 @@ var ObjectId = Schema.ObjectId;
 var RequirementsFactory = require('./public/js/models/RequirementsFactory.js');
 var requirementfactory = new RequirementsFactory(Schema, mongoose, tree);
 requirementfactory.createSchemas();
+var resp = requirementfactory.removeAll();
 requirementfactory.insertPart();
 
 app.get('/requirements', function(req, res) {
     var resp = requirementfactory.getAll({}, res);
 });
 
-app.get('/requirements/:_name.json', function(req, res) {
-    var resp = requirementfactory.getPartByName(req, res);
+app.get('/requirements/root.json', function(req, res) {
+    var resp = requirementfactory.getRoot({}, res);
+});
+
+app.get('/requirements/:_id', function(req, res) {
+    var resp = requirementfactory.getPartById(req, res);
 });
 
 app.post('/requirements', function(req, res) {
     var resp = requirementfactory.putPart(req, res);
 });
 
-app.put('/requirements/:_id', function(req, res) {
+app.put('/requirements', function(req, res) {
     var resp = requirementfactory.updatePart(req, res);
 });
 
