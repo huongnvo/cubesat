@@ -15,9 +15,10 @@
     "jsonwebtoken": "5.0.4",
     "mongodb": "2.0.35",
     "mongojs": "^1.0.1",
-    "mongoose": "4.0.6",
+    "mongoose": "3.5.0",
     "morgan": "1.6.1",
     "sweetalert": "^1.1.0",
-    "forever": "0.15.1"
+    "forever": "0.15.1",
+    "mongoose-treehuong": "0.0.7"
   }
 }

@@ -7,6 +7,7 @@ var mongo = require('mongodb');
 var mongoose = require('mongoose');
 var express = require("express");
 var fs = require('fs');
+var tree = require('mongoose-treehuong');
 
 /* Setting up the express app -------------------------------------------------------*/
 var port = process.env.PORT || 3000;
@@ -34,6 +35,7 @@ mongoose.connect(config.database, function(err) {
         console.log('connection successful');
     }
 });
+
 app.set('superSecret', config.secret); // secret variable
 var db = mongoose.connection;
     db.on('error', console.error.bind(console, 'connection error:'));
@@ -44,34 +46,31 @@ var db = mongoose.connection;
 var Schema = mongoose.Schema;
 var ObjectId = Schema.ObjectId;
 
-/* Route middleware to verify a token -------------------------------------------------*/
-function verifyToken(req, res, next) {
-    // check header or url parameters or post parameters for token
-    var token = req.body.token || req.query.token || req.headers['x-access-token'];
+/* Setting up the database for all users  ---------------------------------------------*/
+var RequirementsFactory = require('./public/js/models/RequirementsFactory.js');
+var requirementfactory = new RequirementsFactory(Schema, mongoose, tree);
+requirementfactory.createSchemas();
+requirementfactory.insertPart();
 
-    // decode token
-    if (token) {
-        // verifies secret and checks exp
-        jwt.verify(token, app.get('superSecret'), function(err, decoded) {      
-            if (err) {
-                return res.json({ 
-                    success: false, 
-                    message: 'Failed to authenticate token.' 
-                });    
-            } else {
-                // if everything is good, save to request for use in other routes
-                req.decoded = decoded;    
-                next();
-            }
-        });
-    } else {
-        return res.status(403).send({ 
-            success: false, 
-            message: 'No token provided.' 
-        });
-    }
-};
+app.get('/requirements', function(req, res) {
+    var resp = requirementfactory.getAll({}, res);
+});
 
+app.get('/requirements/:_name.json', function(req, res) {
+    var resp = requirementfactory.getPartByName(req, res);
+});
+
+app.post('/requirements', function(req, res) {
+    var resp = requirementfactory.putPart(req, res);
+});
+
+app.put('/requirements/:_id', function(req, res) {
+    var resp = requirementfactory.updatePart(req, res);
+});
+
+app.delete('/requirements/:_id', function(req, res) {
+    var resp = requirementfactory.removePart(req, res);
+});
 
 /* Setting the routes and html file paths -----------------------------------------------*/
 app.set('view engine', 'ejs');

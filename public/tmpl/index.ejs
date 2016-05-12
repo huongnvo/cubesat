@@ -1,44 +1,127 @@
 <!DOCTYPE html>
-<meta charset="utf-8">
+<html>
+<% include header %>
+<% include navbar %>
+
 <style>
-	.node {
-		cursor: pointer;
-	}
+.node {
+    cursor: pointer;
+}
 
-	.node circle {
-		fill: #fff;
-		stroke: steelblue;
-		stroke-width: 1.5px;
-	}
+.node circle {
+    fill: #fff;
+    stroke: steelblue;
+    stroke-width: 1.5px;
+}
 
-	.node text {
-		font: 10px sans-serif;
-	}
+.node text {
+    font: 10px sans-serif;
+}
 
-	.link {
-		fill: none;
-		stroke: #ccc;
-		stroke-width: 1.5px;
-	}
+.link {
+    fill: none;
+    stroke: #ccc;
+    stroke-width: 1.5px;
+}
 </style>
 
 <html>
 <body id="home">
 	<script type="text/javascript" src="js/lib/d3.min.js"></script>
 	<script type="text/javascript">
-		var margin = {top: 20, right: 120, bottom: 20, left: 120},
-		    width = 960 - margin.right - margin.left,
-		    height = 800 - margin.top - margin.bottom;
+		var getJSON = function(url, callback) {
+			var xhr = new XMLHttpRequest();
+			xhr.open("get", url, true);
+			xhr.responseType = "json";
+			xhr.onload = function() {
+				var status = xhr.status;
+				if (status == 200) {
+					callback(null, xhr.response);
+				} else {
+					callback(status);
+				}
+			};
+			xhr.send();
+		};
 
-		var i = 0,
-		    duration = 750,
-		    root;
+		var data = 
+			  {
+			    "_id": "5733fe5c736df89b7f5d2a02",
+			    "path": "5733fe5c736df89b7f5d2a01#5733fe5c736df89b7f5d2a02",
+			    "parent": "5733fe5c736df89b7f5d2a01",
+			    "name": "CubeSat",
+			    "description": "Low-Earth Orbit CubeSat",
+			    "__v": 0,
+			    "size": 5219,
+			    "children": [
+			      {
+			        "_id": "5733fe5c736df89b7f5d2a03",
+			        "path": "5733fe5c736df89b7f5d2a01#5733fe5c736df89b7f5d2a02#5733fe5c736df89b7f5d2a03",
+			        "parent": "5733fe5c736df89b7f5d2a02",
+			        "name": "CDH",
+			        "description": "Command & Data Handling Subsystem",
+			        "__v": 0,
+			        "size": 5219,
+			        "children": [
+			          {
+			            "_id": "5733fe5c736df89b7f5d2a09",
+			            "path": "5733fe5c736df89b7f5d2a01#5733fe5c736df89b7f5d2a02#5733fe5c736df89b7f5d2a03#5733fe5c736df89b7f5d2a09",
+			            "parent": "5733fe5c736df89b7f5d2a03",
+			            "name": "blah",
+			            "description": "vlah",
+			            "size": 5219,
+			            "__v": 0
+			          }
+			        ]
+			      },
+			      {
+			        "_id": "5733fe5c736df89b7f5d2a04",
+			        "path": "5733fe5c736df89b7f5d2a01#5733fe5c736df89b7f5d2a02#5733fe5c736df89b7f5d2a04",
+			        "parent": "5733fe5c736df89b7f5d2a02",
+			        "name": "ADCS",
+			        "description": "Attitude Determination & Control Subsystem",
+			        "__v": 0,
+			        "size": 5219,
+			      },
+			      {
+			        "_id": "5733fe5c736df89b7f5d2a05",
+			        "path": "5733fe5c736df89b7f5d2a01#5733fe5c736df89b7f5d2a02#5733fe5c736df89b7f5d2a05",
+			        "parent": "5733fe5c736df89b7f5d2a02",
+			        "name": "PS",
+			        "description": "Propulsion Subsystem",
+			        "__v": 0,
+			        "size": 5219,
+			      },
+			      {
+			        "_id": "5733fe5c736df89b7f5d2a06",
+			        "path": "5733fe5c736df89b7f5d2a01#5733fe5c736df89b7f5d2a02#5733fe5c736df89b7f5d2a06",
+			        "parent": "5733fe5c736df89b7f5d2a02",
+			        "name": "TS",
+			        "description": "Thermal & Structures",
+			        "__v": 0,
+			        "size": 5219,
+			      },
+			      {
+			        "_id": "5733fe5c736df89b7f5d2a07",
+			        "path": "5733fe5c736df89b7f5d2a01#5733fe5c736df89b7f5d2a02#5733fe5c736df89b7f5d2a07",
+			        "parent": "5733fe5c736df89b7f5d2a02",
+			        "name": "COM",
+			        "description": "Communication Subsystem",
+			        "__v": 0,
+			        "size": 5219,
+			      },
+			      {
+			        "_id": "5733fe5c736df89b7f5d2a08",
+			        "path": "5733fe5c736df89b7f5d2a01#5733fe5c736df89b7f5d2a02#5733fe5c736df89b7f5d2a08",
+			        "parent": "5733fe5c736df89b7f5d2a02",
+			        "name": "EPS",
+			        "description": "Electrical Power Subsystem",
+			        "__v": 0,
+			        "size": 5219,
+			      }
+			    ]
+			  };
 
-		var tree = d3.layout.tree()
-		    .size([height, width]);
-
-		var diagonal = d3.svg.diagonal()
-		    .projection(function(d) { return [d.y, d.x]; });
 
 		var json = {
 		 "name": "flare",
@@ -421,42 +504,58 @@
 		 ]
 		};
 
+		var margin = {top: 20, right: 120, bottom: 20, left: 120},
+		    width = 960 - margin.right - margin.left,
+		    height = 800 - margin.top - margin.bottom;
+
+		var i = 0,
+		    duration = 750,
+		    root;
+
+		var tree = d3.layout.tree()
+		    .size([height, width]);
+
+		var diagonal = d3.svg.diagonal()
+		    .projection(function(d) { return [d.y, d.x]; });
+
 		var svg =   d3.select("body").append("svg")
-					.attr("width", width + margin.right + margin.left)
-					.attr("height", height +margin.top + margin.bottom)
-					.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-				
-		root = json;
-		root.x0 = height / 2;
-		root.y0 = 0;
-
-		function collapse(d) {
-			if (d.children) {
-				d._children = d.children;
-				d._children.forEach(collapse);
-				d.children = null;
+			.attr("width", width + margin.right + margin.left)
+			.attr("height", height +margin.top + margin.bottom)
+			.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+		
+		getJSON("http://localhost:3000/requirements/CubeSat.json", function(err, data) {
+			if (err) {
+				console.log('error', err);
+			} else {
+				console.log('data accessed');
 			}
-		}
+			root = data[0];
+			root.x0 = height / 2;
+			root.y0 = 0;
+			root.children.forEach(collapse);
 
-		root.children.forEach(collapse);
-		update(root);
-
-		d3.select(self.frameElement).style("height", "800px");
+			update(root);
+			d3.select(self.frameElement).style("height", "800px");
+			function collapse(d) {
+				if (d.children) {
+					d._children = d.children;
+					d._children.forEach(collapse);
+					d.children = null;
+				}
+			}
+		});
 
 		function update(source) {
 			// Compute the new tree layout.
 			var nodes = tree.nodes(root).reverse(),
 				links = tree.links(nodes);
-
 			// Normalize for fixed-depth.
 			nodes.forEach(function(d) { d.y = d.depth * 180; });
-
 			// Update the nodes…
 			var node =  svg.selectAll("g.node")
 						.data(nodes, function(d) { 
 							return d.id || (d.id = ++i); 
 						});
-
 			// Enter any new nodes at the parent's previous position.
 			var nodeEnter = node.enter().append("g")
 							.attr("class", "node")
@@ -464,11 +563,9 @@
 								return "translate(" + source.y0 + "," + source.x0 + ")"; 
 							})
 							.on("click", click);
-
 			nodeEnter.append("circle")
 				.attr("r", 1e-6)
 				.style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
-
 			nodeEnter.append("text")
 				.attr("x", function(d) { 
 					return d.children || d._children ? -10 : 10; 
@@ -481,23 +578,19 @@
 					return d.name; 
 				})
 				.style("fill-opacity", 1e-6);
-
 			// Transition nodes to their new position.
 			var nodeUpdate = node.transition()
 							.duration(duration)
 							.attr("transform", function(d) { 
 								return "translate(" + d.y + "," + d.x + ")"; 
 							});
-
 			nodeUpdate.select("circle")
 				.attr("r", 4.5)
 				.style("fill", function(d) { 
 					return d._children ? "lightsteelblue" : "#fff"; 
 				});
-
 			nodeUpdate.select("text")
 				.style("fill-opacity", 1);
-
 			// Transition exiting nodes to the parent's new position.
 			var nodeExit =  node.exit().transition()
 							.duration(duration)
@@ -505,19 +598,15 @@
 								return "translate(" + source.y + "," + source.x + ")"; 
 							})
 							.remove();
-
 			nodeExit.select("circle")
 				.attr("r", 1e-6);
-
 			nodeExit.select("text")
 				.style("fill-opacity", 1e-6);
-
 			// Update the links…
 			var link =  svg.selectAll("path.link")
 						.data(links, function(d) { 
 							return d.target.id; 
 						});
-
 			// Enter any new links at the parent's previous position.
 			link.enter().insert("path", "g")
 				.attr("class", "link")
@@ -525,12 +614,10 @@
 					var o = {x: source.x0, y: source.y0};
 					return diagonal({source: o, target: o});
 				});
-
 			// Transition links to their new position.
 			link.transition()
 				.duration(duration)
 				.attr("d", diagonal);
-
 			// Transition exiting nodes to the parent's new position.
 			link.exit().transition()
 				.duration(duration)
@@ -539,14 +626,12 @@
 					return diagonal({source: o, target: o});
 				})
 				.remove();
-
 			// Stash the old positions for transition.
 			nodes.forEach(function(d) {
 				d.x0 = d.x;
 				d.y0 = d.y;
 			});
 		}
-
 		// Toggle children on click.
 		function click(d) {
 			if (d.children) {
