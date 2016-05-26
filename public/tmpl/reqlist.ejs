@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html data-ng-app="cubesatApp">
+<% include header %>
+<% include navbar %>
+
+<body class="container" data-ng-controller="homeController">
+    <h1>Time Tracking</h1>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th> 
+                    <a href="" ng-click="order('Name')">Name</a>
+                    <span class="sortorder" ng-class="{reverse:reverse}"></span>
+                </th>
+                <th> 
+                    <a href="" ng-click="order('Hours')">Hours</a>
+                    <span class="sortorder" ng-class="{reverse:reverse}"></span>
+                </th>
+                <th> 
+                    <a href="" ng-click="order('Minutes')">Minutes</a>
+                    <span class="sortorder" ng-class="{reverse:reverse}"></span>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat ="result in results | orderBy:predicate:reverse">
+                <td data-whatever={{result}}>{{result['person-first-name']}}</td>
+                <td data-whatever={{result}}>{{result['hours']}}</td>
+                <td data-whatever={{result}}>{{result['minutes']}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <hr>
+</body>
+
+</html>

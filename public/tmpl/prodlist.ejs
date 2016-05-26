@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html data-ng-app="cubesatApp">
+<% include header %>
+<% include navbar %>
+
+<body class="container" data-ng-controller="prodlistController">
+    <h1>Master Product List</h1>
+    <hr>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th> 
+                    <a href="" ng-click="order('name')"><h3>Name</h3></a>
+                    <span class="sortorder" ng-show="predicate === 'name'" ng-class="{reverse:reverse}"></span>
+                </th>
+                <th> 
+                    <a href="" ng-click="order('identifier')"><h3>Identifier</h3></a>
+                    <span class="sortorder" ng-show="predicate === 'identifier'" ng-class="{reverse:reverse}"></span>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat ="product in products | orderBy:predicate:reverse" ng-if="product.name != 'root'">
+                <td data-whatever={{result}}>{{product.name}}</td>
+                <td data-whatever={{result}}>{{product.identifier | uppercase}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <hr>
+</body>
+
+</html>

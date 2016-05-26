@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html data-ng-app="cubesatApp">
+<% include header %>
+<% include navbar %>
+
+<body class="container" data-ng-controller="newreqController">
+    <h1>Post a New Requirement</h1>
+    <hr>
+    <div class="row">
+        <div class="col-lg-12">
+            <h3>Name: </h3>
+                <input type="text" required class="form-control" placeholder="e.g., Attitude Control" ng-model="inputName"/>
+            <div class="divider"></div>
+            <h3>Identifier: </h3>
+                 <input type="text" class="form-control" placeholder="e.g., adcs2" ng-model="inputIdentifier"/>
+            <div class="divider"></div>
+            <h3>Description: </h3>
+                 <input type="text" class="form-control" placeholder="e.g., The ADCS will control the attitude of s/c." ng-model="inputDescription"/>
+            <div class="divider"></div>
+            <h3>Flowup: </h3>
+                 <input type="text" class="form-control" placeholder="e.g., adcs1" ng-model="inputFlowup"/>
+            <div class="divider"></div>
+        </div> 
+    </div> 
+    <div class="row">
+        <div class="col-lg-12">
+            <a type="button" class="btn btn-primary btn-lg" ng-click="addReq()" id="pushdown2" title= "Add Info"><h4>Add Requirement</h4></a>
+        </div>
+    </div>
+    <hr>
+</body>
+</html>

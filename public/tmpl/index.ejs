@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html>
 <% include header %>
-<% include navbar %>
+<% include navbarhome %>
 
-<html>
 <body id="home">
-	<script type="text/javascript" src="js/lib/d3.min.js"></script>
 	<script type="text/javascript">
 		var getJSON = function(url, callback) {
 			var xhr = new XMLHttpRequest();
@@ -23,8 +21,8 @@
 		};
 
 		var margin = {top: 20, right: 120, bottom: 20, left: 120},
-		    width = 960 - margin.right - margin.left,
-		    height = 800 - margin.top - margin.bottom;
+		    width = 1200 - margin.right - margin.left,
+		    height = 1500 - margin.top - margin.bottom;
 
 		var i = 0,
 		    duration = 750,
@@ -36,12 +34,19 @@
 		var diagonal = d3.svg.diagonal()
 		    .projection(function(d) { return [d.y, d.x]; });
 
-		var svg =   d3.select("body").append("svg")
+		var div = d3.select("body")
+			.append("div")
+			.attr("class", "tooltip")
+			.style("opacity", 0);
+
+		var svg = d3.select("body")
+			.append("svg")
 			.attr("width", width + margin.right + margin.left)
 			.attr("height", height +margin.top + margin.bottom)
-			.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+			.append("g")
+			.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 		
-		getJSON("/requirements/root.json", function(err, data) {
+		getJSON("/products/root.json", function(err, data) {
 			if (err) {
 				console.log('error', err);
 			} else {
@@ -67,23 +72,55 @@
 			// Compute the new tree layout.
 			var nodes = tree.nodes(root).reverse(),
 				links = tree.links(nodes);
+
 			// Normalize for fixed-depth.
-			nodes.forEach(function(d) { d.y = d.depth * 180; });
+			nodes.forEach(function(d) { 
+				d.y = d.depth * 180; 
+			});
+
 			// Update the nodes…
 			var node =  svg.selectAll("g.node")
 						.data(nodes, function(d) { 
 							return d.id || (d.id = ++i); 
-						});
+						});				
+
+			
+
 			// Enter any new nodes at the parent's previous position.
-			var nodeEnter = node.enter().append("g")
+			var nodeEnter = node.enter()
+							.append("g")
 							.attr("class", "node")
 							.attr("transform", function(d) { 
 								return "translate(" + source.y0 + "," + source.x0 + ")"; 
 							})
-							.on("click", click);
+							.on("click", click)
+							.on("mouseover", function(d) {
+								div.transition()
+									.duration(500)	
+									.style("opacity", 0);
+								div.transition()
+									.duration(200)
+									.style("opacity", .9);
+								div .html(
+									'<a href="/req?' + d.identifier + '"">' +   
+									"View requirements for: " + d.name +
+									"</a>"
+								)
+								.style("left", (d3.event.pageX + 15) + "px")
+								.style("top", (d3.event.pageY - 28) + "px");
+							})
+							.on("mouseout", function(d) {
+								div.transition()
+								.duration(2000)
+								.style("opacity", 0);
+							});
+
 			nodeEnter.append("circle")
 				.attr("r", 1e-6)
-				.style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
+				.style("fill", function(d) { 
+					return d._children ? "lightsteelblue" : "#fff"; 
+				});
+
 			nodeEnter.append("text")
 				.attr("x", function(d) { 
 					return d.children || d._children ? -10 : 10; 
@@ -96,19 +133,23 @@
 					return d.name; 
 				})
 				.style("fill-opacity", 1e-6);
+
 			// Transition nodes to their new position.
 			var nodeUpdate = node.transition()
 							.duration(duration)
 							.attr("transform", function(d) { 
 								return "translate(" + d.y + "," + d.x + ")"; 
 							});
+
 			nodeUpdate.select("circle")
-				.attr("r", 4.5)
+				.attr("r", 7)
 				.style("fill", function(d) { 
 					return d._children ? "lightsteelblue" : "#fff"; 
 				});
+
 			nodeUpdate.select("text")
 				.style("fill-opacity", 1);
+
 			// Transition exiting nodes to the parent's new position.
 			var nodeExit =  node.exit().transition()
 							.duration(duration)
@@ -116,15 +157,19 @@
 								return "translate(" + source.y + "," + source.x + ")"; 
 							})
 							.remove();
+
 			nodeExit.select("circle")
 				.attr("r", 1e-6);
+
 			nodeExit.select("text")
 				.style("fill-opacity", 1e-6);
+
 			// Update the links…
 			var link =  svg.selectAll("path.link")
 						.data(links, function(d) { 
 							return d.target.id; 
 						});
+
 			// Enter any new links at the parent's previous position.
 			link.enter().insert("path", "g")
 				.attr("class", "link")
@@ -132,10 +177,12 @@
 					var o = {x: source.x0, y: source.y0};
 					return diagonal({source: o, target: o});
 				});
+
 			// Transition links to their new position.
 			link.transition()
 				.duration(duration)
 				.attr("d", diagonal);
+
 			// Transition exiting nodes to the parent's new position.
 			link.exit().transition()
 				.duration(duration)
@@ -144,6 +191,7 @@
 					return diagonal({source: o, target: o});
 				})
 				.remove();
+
 			// Stash the old positions for transition.
 			nodes.forEach(function(d) {
 				d.x0 = d.x;
@@ -162,8 +210,6 @@
 			}
 			update(d);
 		}
-
-		
 	</script>
 </body>
 </html>
