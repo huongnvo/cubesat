@@ -4,9 +4,9 @@
 <% include navbar %>
 
 <body class="container" data-ng-controller="reqController">
-    <h1>Requirements Specification:&nbsp&nbsp{{title}}</h1>
+    <h1>Requirements Specification:&nbsp&nbsp{{title}} ({{length}})</h1>
     <hr>
-    <table class="table table-hover">
+    <table class="table table-hover table-striped">
         <thead>
             <tr>
                 <th> 
@@ -21,17 +21,96 @@
                     <a href="" ng-click="order('description')"><h3>Description</h3></a>
                     <span class="sortorder" ng-class="{reverse:reverse}"></span>
                 </th>
+                <th> 
+                    <a href="" ng-click="order('description')"><h3>Type</h3></a>
+                    <span class="sortorder" ng-class="{reverse:reverse}"></span>
+                </th>
+                <th class="text-right"></th>
             </tr>
         </thead>
         <tbody>
             <tr ng-repeat ="requirement in requirements | orderBy:predicate:reverse">
-                <td data-whatever={{requirement}}>{{requirement.identifier | uppercase}}</td>
-                <td data-whatever={{requirement}}>{{requirement.name}}</td>
-                <td data-whatever={{requirement}}>{{requirement.description}}</td>
+                <td ng-click="goToReq(requirement)" data-whatever={{requirement}}>{{requirement.subsystem | uppercase}}-{{requirement.identifier}}</td>
+                <td ng-click="goToReq(requirement)" data-whatever={{requirement}}>{{requirement.name}}</td>
+                <td ng-click="goToReq(requirement)" data-whatever={{requirement}}>{{requirement.description}}</td>
+                <td ng-click="goToReq(requirement)" data-whatever={{requirement}}>{{requirement.type}}</td>
+                <td class="text-right"><a ng-hide="requirement.verification == '' || requirement.description == '' || requirement.rationalization == ''" type="button" class="btn btn-xs btn-warning">Missing Info</a>
+                    <a ng-hide="requirement.verification != '' && requirement.description != '' && requirement.rationalization != ''" type="button" class="btn btn-xs btn-success">Requirement Complete</a>
+                    <a type="button" class="btn btn-xs btn-warning">Verification Incomplete</a>
+                    <!-- <a type="button" class="btn btn-xs btn-success">Verification Complete</a> -->
+                    <a type="button" class="btn btn-xs btn-danger" ng-click="deletePart(requirement)"><span class="glyphicon glyphicon-trash" aria-hidden="true"></a> 
+                </td>
             </tr>
         </tbody>
     </table>
     <hr>
+    
+    <div class="row">
+        <div class="col-lg-6">
+            <div ng-hide="id == ''" class="panel panel-success">
+                <div class="panel-heading"><h4>Flow-Up Component</h4></div>
+                <table class="table table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <th> 
+                                <a href="" ng-click="order('identifier')"><h4>Identifier</h4></a>
+                                <span class="sortorder" ng-class="{reverse:reverse}"></span>
+                            </th>
+                            <th> 
+                                <a href="" ng-click="order('name')"><h4>Name</h4></a>
+                                <span class="sortorder" ng-class="{reverse:reverse}"></span>
+                            </th>
+                            <th> 
+                                <a href="" ng-click="order('description')"><h4>Description</h4></a>
+                                <span class="sortorder" ng-class="{reverse:reverse}"></span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-hide="parentProd.name == 'root'" ng-click="goToProd(parentProd)">
+                            <td data-whatever={{parentProd}}>{{parentProd.subsystem | uppercase}}-{{parentProd.identifier}}</td>
+                            <td data-whatever={{parentProd}}>{{parentProd.name}}</td>
+                            <td data-whatever={{parentProd}}>{{parentProd.description}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div ng-hide="id == ''" class="panel panel-success">
+                <div class="panel-heading"><h4>Flow-Down Components</h4></div>
+                <table class="table table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <th> 
+                                <a href="" ng-click="order('identifier')"><h4>Identifier</h4></a>
+                                <span class="sortorder" ng-class="{reverse:reverse}"></span>
+                            </th>
+                            <th> 
+                                <a href="" ng-click="order('name')"><h4>Name</h4></a>
+                                <span class="sortorder" ng-class="{reverse:reverse}"></span>
+                            </th>
+                            <th> 
+                                <a href="" ng-click="order('description')"><h4>Description</h4></a>
+                                <span class="sortorder" ng-class="{reverse:reverse}"></span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-click="goToProd(part)" ng-repeat ="part in parts | orderBy:predicate:reverse" ng-if="part.parent == id">
+                            <td data-whatever={{part}}>{{part.subsystem | uppercase}}-{{part.identifier}}</td>
+                            <td data-whatever={{part}}>{{part.name}}</td>
+                            <td data-whatever={{part}}>{{part.description}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br>
+            </div>
+        </div>
+    </div>
+    <hr ng-hide="id == ''">
+
 </body>
 
 </html>

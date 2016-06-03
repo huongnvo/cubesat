@@ -6,10 +6,14 @@ var RequirementsFactory = function(Schema,mongoose) {
 
 	this.createSchemas = function() {
 		var RequirementSchema = new this.Schema({
-			name: String,
-			identifier: String,
-			description: String,
-			flowup: String
+			name: String,            /* name of requirement */
+			product: String,		 /* product requirement belongs to */
+			identifier: Number,		 /* id of requirement i.e., the number in which it was created */
+			subsystem: String,		 /* subsystem it belongs to */
+			type: String,			 /* functional or non-functional */
+			description: String,	 /* description of requirement */
+			rationalization: String, /* rationalization of requirement */
+			verification: String 	 /* verification of requirement */
 		});
 		this.requirement = mongoose.model('requirement', RequirementSchema);
 	}
@@ -21,17 +25,27 @@ var RequirementsFactory = function(Schema,mongoose) {
 	};
 
 	this.getPartById = function(query, res) {
-		this.requirement.find({identifier: query.params.identifier}, function(error,output) {
+		this.requirement.find({_id: query.params._id}, function(error,output) {
+			res.json(output);
+		});
+	};
+
+	this.getPartByProduct = function(query, res) {
+		this.requirement.find({product: query.params.product}, function(error,output) {
 			res.json(output);
 		});
 	};
 
 	this.putPart = function(req, res) {
 		var newpart = new this.requirement({
-			name: req.body.name,
-			identifier: req.body.identifier,
-			description: req.body.description,
-			flowup: req.body.flowup
+			name: req.body.name,                		/* name of requirement */
+			product: req.body.product,		 	 		/* product requirement belongs to */
+			identifier: req.body.identifier,     		/* id of requirement */
+			subsystem: req.body.subsystem,		 		/* subsystem it belongs to */
+			type: req.body.type,			 	 		/* functional or non-functional */
+			description: req.body.description,	 		/* description of requirement */
+			rationalization: req.body.rationalization,  /* rationalization of requirement */
+			verification: req.body.verification 	    /* verification of requirement */
     	});
 		newpart.save(function (error, output) {
 			res.json(output);
@@ -44,10 +58,14 @@ var RequirementsFactory = function(Schema,mongoose) {
       		_id: req.params._id
     	}, 
     	{
-			name: req.body.name,
-			identifier: req.body.identifier,			
-			description: req.body.description,
-			flowup: req.body.flowup
+			name: req.body.name,                		/* name of requirement */
+			product: req.body.product,		 	 		/* product requirement belongs to */
+			identifier: req.body.identifier,     		/* id of requirement */
+			subsystem: req.body.subsystem,		 		/* subsystem it belongs to */
+			type: req.body.type,			 	 		/* functional or non-functional */
+			description: req.body.description,	 		/* description of requirement */
+			rationalization: req.body.rationalization,  /* rationalization of requirement */
+			verification: req.body.verification 	    /* verification of requirement */
     	}, 
     	function(error, output) {
       		res.json(output);

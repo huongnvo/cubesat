@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html>
 <% include header %>
-<% include navbarhome %>
+<% include navbar %>
 
-<body id="home">
+<body class="container" id="home">
+	<h1>Product Hierachy</h1>
+	<p class="lead">A tree view of the components list for the DUBSAT-1. Click on each node to expand the product list, and hover to see a link for each product's requirements.</p>
+
+	<hr>
 	<script type="text/javascript">
 		var getJSON = function(url, callback) {
 			var xhr = new XMLHttpRequest();
@@ -102,7 +106,7 @@
 									.duration(200)
 									.style("opacity", .9);
 								div .html(
-									'<a href="/req?' + d.identifier + '"">' +   
+									'<a href="/req?' + d._id + '"">' +   
 									"View requirements for: " + d.name +
 									"</a>"
 								)

@@ -4,9 +4,9 @@
 <% include navbar %>
 
 <body class="container" data-ng-controller="prodlistController">
-    <h1>Master Product List</h1>
+    <h1>Master Product List ({{length}})</h1>
     <hr>
-    <table class="table table-hover">
+    <table class="table table-hover table-striped">
         <thead>
             <tr>
                 <th> 
@@ -20,9 +20,9 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat ="product in products | orderBy:predicate:reverse" ng-if="product.name != 'root'">
+            <tr ng-click="goToProd(product)" ng-repeat ="product in products | orderBy:predicate:reverse" ng-if="product.name != 'root'">
                 <td data-whatever={{result}}>{{product.name}}</td>
-                <td data-whatever={{result}}>{{product.identifier | uppercase}}</td>
+                <td data-whatever={{result}}>{{product.subsystem | uppercase }}-{{product.identifier}} </td>
             </tr>
         </tbody>
     </table>

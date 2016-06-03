@@ -6,9 +6,10 @@ var ProductsFactory = function(Schema,mongoose,tree) {
 
 	this.createSchemas = function() {
 		var ProductSchema = new this.Schema({
-			name: String,
-			identifier: String,
-			prodlevel: String
+			name: String, 			/* name of product */
+			identifier: Number,		/* number of product */
+			subsystem: String, 		/* subsystem of product */
+			description: String 	/* short description of product */
 		});
 		ProductSchema.plugin(tree);
 		this.product = mongoose.model('product', ProductSchema);
@@ -17,327 +18,457 @@ var ProductsFactory = function(Schema,mongoose,tree) {
 	this.insertPart = function() {
 		this.object = new this.product({
 			name: 'root',
-			identifier: 'none',
+			identifier: 0,
+			subsystem: 'none', 
+			description: 'none' 
 		});
 
 		var tier0 = new this.product({
 			name: 'DUBSAT-1',
-			identifier: 'dubs1', 
+			identifier: 1, 
+			subsystem: 'dubs',
+			description: 'none'
 		});
 
 		var part2 = new this.product({
 			name: 'ADCS',
-			identifier: 'adcs1',
+			identifier: 2,
+			subsystem: 'adcs',
+			description: 'none'
 		});
 
 		var adcssubpart1 = new this.product({
 			name: 'Attitude Determination',
-			identifier: 'adcs2',
+			identifier: 3,
+			subsystem: 'adcs',
+			description: 'none'
 		});
 
 		var adcssubpart2 = new this.product({
 			name: 'Attitude Control',
-			identifier: 'adcs2',
+			identifier: 4,
+			subsystem: 'adcs',
+			description: 'none'
 		});
 
 		var adcsssubpart1 = new this.product({
 			name: 'Positioning Sensor',
-			identifier: 'adcs3',
+			identifier: 5,
+			subsystem: 'adcs',
+			description: 'none'
 		});
 
 		var adcsssubpart2 = new this.product({
 			name: 'Attitude Sensors',
-			identifier: 'adcs3',
+			identifier: 6,
+			subsystem: 'adcs',
+			description: 'none'
 		});
 
 		var adcsssubpart3 = new this.product({
 			name: 'Estimation Algorithm',
-			identifier: 'adcs3',
+			identifier: 7,
+			subsystem: 'adcs',
+			description: 'none'
 		});
 
 		var adcsssubpart4 = new this.product({
 			name: 'Magnetorquers',
-			identifier: 'adcs3',
+			identifier: 8,
+			subsystem: 'adcs',
+			description: 'none'
 		});
 
 		var adcsssubpart6 = new this.product({
 			name: 'Control Algorithm',
-			identifier: 'adcs3',
+			identifier: 9,
+			subsystem: 'adcs',
+			description: 'none'
 		});
 
 		var adcsssubpart5 = new this.product({
 			name: "Reaction Wheels",
-			identifier: 'adcs3',
+			identifier: 10,
+			subsystem: 'adcs',
+			description: 'none'
 		});
 
 		var adcssssubpart1 = new this.product({
 			name: 'Magnetometers',
-			identifier: 'adcs4',
+			identifier: 11,
+			subsystem: 'adcs',
+			description: 'none'
 		});
 
 		var adcssssubpart2 = new this.product({
 			name: 'Photodiodes',
-			identifier: 'adcs4',
+			identifier: 12,
+			subsystem: 'adcs',
+			description: 'none'
 		});
 
 		var adcssssubpart3 = new this.product({
 			name: 'Sun Sensors',
-			identifier: 'adcs4',
+			identifier: 13,
+			subsystem: 'adcs',
+			description: 'none'
 		});
 
 		var adcssssubpart4 = new this.product({
 			name: 'Actuator', 
-			identifier: 'adcs4',
+			identifier: 14,
+			subsystem: 'adcs',
+			description: 'none'
 		});
 
 		var adcssssubpart5 = new this.product({
 			name: 'Driver',
-			identifier: 'adcs4',
+			identifier: 15,
+			subsystem: 'adcs',
+			description: 'none'
 		});
 
 		var adcssssubpart6 = new this.product({
 			name: 'Motor',
-			identifier: 'adcs4',
+			identifier: 16,
+			subsystem: 'adcs',
+			description: 'none'
 		});
 
 		var adcssssubpart7 = new this.product({
 			name: 'Controller',
-			identifier: 'adcs4',
+			identifier: 17,
+			subsystem: 'adcs',
+			description: 'none'
 		});
 
 		var part1 = new this.product({
 			name: 'CDH',
-			identifier: 'cdh1',
+			identifier: 18,
+			subsystem: 'cdh',
+			description: 'none'
 		});
 
 		var cdhsubpart1 = new this.product({
 			name: 'Main Flight Computer',
-			identifier: 'cdh2', 
+			identifier: 19, 
+			subsystem: 'cdh',
+			description: 'none'
 		});
 
 		var cdhsubpart2 = new this.product({
 			name: 'Health Monitoring',
-			identifier: 'cdh2',
+			identifier: 20,
+			subsystem: 'cdh',
+			description: 'none'
 		});
 
 		var cdhssubpart1 = new this.product({
 			name: 'Non-Volatile Memory',
-			identifier: 'cdh3',
+			identifier: 21,
+			subsystem: 'cdh',
+			description: 'none'
 		});
 
 		var cdhssubpart1b = new this.product({
 			name: 'Main Processor',
-			identifier: 'cdh3',
+			identifier: 22,
+			subsystem: 'cdh',
+			description: 'none'
 		});
 
 		var cdhssubpart2 = new this.product({
 			name: 'Microcontrollers',
-			identifier: 'cdh3',
+			identifier: 23,
+			subsystem: 'cdh',
+			description: 'none'
 		});
 
 		var cdhssubpart3 = new this.product({
 			name: 'Sensors',
-			identifier: 'cdh3',
+			identifier: 24,
+			subsystem: 'cdh',
+			description: 'none'
 		});
 
 		var cdhssubpart4 = new this.product({
 			name: 'I2C Bus Line',
-			identifier: 'cdh3',
+			identifier: 25,
+			subsystem: 'cdh',
+			description: 'none'
 		});
 
 		var cdhsssubpart1 = new this.product({
 			name: 'PPT Controller',
-			identifier: 'cdh4',
+			identifier: 26,
+			subsystem: 'cdh',
+			description: 'none'
 		});
 
 		var cdhsssubpart2 = new this.product({
 			name: 'Communication Controller',			
-			identifier: 'cdh4',
+			identifier: 27,
+			subsystem: 'cdh',
+			description: 'none'
 		});
 
 		var cdhsssubpart3 = new this.product({
 			name: 'ADCS Controller',
-			identifier: 'cdh4',
+			identifier: 28,
+			subsystem: 'cdh',
+			description: 'none'
 		});
 
 		var part3 = new this.product({
 			name: 'PS',
-			identifier: 'ps1',
+			identifier: 29,
+			subsystem: 'ps',
+			description: 'none'
 		});
 
 		var pssubpart1 = new this.product({
 			name: 'Electrodes',
-			identifier: 'ps2',
+			identifier: 30,
+			subsystem: 'ps',
+			description: 'none'
 		});
 
 		var pssubpart2 = new this.product({
 			name: 'Discharge Electronics',
-			identifier: 'ps2',
+			identifier: 31,
+			subsystem: 'ps',
+			description: 'none'
 		});
 
 		var pssubpart3 = new this.product({
 			name: 'Fuel Source',
-			identifier: 'ps2',
+			identifier: 32,
+			subsystem: 'ps',
+			description: 'none'
 		});
 
 		var pssubpart4 = new this.product({
 			name: 'Frame/Body',
-			identifier: 'ps2',
+			identifier: 33,
+			subsystem: 'ps',
+			description: 'none'
 		});
 
 		var pssubpart5 = new this.product({
 			name: 'Igniter Electronics',
-			identifier: 'ps2',
+			identifier: 34,
+			subsystem: 'ps',
+			description: 'none'
 		});
 
 		var pssubpart6 = new this.product({
 			name: 'Energy Storage System',
-			identifier: 'ps2',
+			identifier: 35,
+			subsystem: 'ps',
+			description: 'none'
 		});
 
 		var part4 = new this.product({
 			name: 'TS',
-			identifier: 'ts1',
+			identifier: 36,
+			subsystem: 'ts',
+			description: 'none'
 		});
 
 		var tssubpart1 = new this.product({
 			name: 'Thermal/Electrical Management',
-			identifier: 'ts2',
+			identifier: 37,
+			subsystem: 'ts',
+			description: 'none'
 		});
 
 		var tssubpart2 = new this.product({
 			name: 'CubeSat Chassis',
-			identifier: 'ts2',
+			identifier: 38,
+			subsystem: 'ts',
+			description: 'none'
 		});
 
 		var tssubpart3 = new this.product({
 			name: 'Deployables',
-			identifier: 'ts2',
+			identifier: 39,
+			subsystem: 'ts',
+			description: 'none'
 		});
 
 		var tsssubpart1 = new this.product({
 			name: 'Antennas',
-			identifier: 'ts3',
+			identifier: 40,
+			subsystem: 'ts',
+			description: 'none'
 		});
 
 		var tsssubpart2 = new this.product({
 			name: 'Solar Panels',
-			identifier: 'ts3',
+			identifier: 41,
+			subsystem: 'ts',
+			description: 'none'
 		});
 
 		var part5 = new this.product({
 			name: 'COM',
-			identifier: 'com1',
+			identifier: 42,
+			subsystem: 'com',
+			description: 'none'
 		});
 
 		var comsubpart1 = new this.product({
 			name: 'Low-Freq (Comm1)',
-			identifier: 'com2',
+			identifier: 43,
+			subsystem: 'com',
+			description: 'none'
 		});
 
 		var comsubpart2 = new this.product({
 			name: 'High-Freq (Comm2)',
-			identifier: 'com2',
+			identifier: 44,
+			subsystem: 'com',
+			description: 'none'
 		});
 
 		var comssubpart1 = new this.product({
 			name: 'Antenna',
-			identifier: 'com3',
+			identifier: 45,
+			subsystem: 'com',
+			description: 'none'
 		});
 
 		var comssubpart2 = new this.product({
 			name: 'Transceiver',
-			identifier: 'com3',
+			identifier: 46,
+			subsystem: 'com',
+			description: 'none'
 		});
 
 		var comssubpart3 = new this.product({
 			name: 'K-Band Patch Antenna',
-			identifier: 'com3',
+			identifier: 47,
+			subsystem: 'com',
+			description: 'none'
 		});
 
 		var comssubpart4 = new this.product({
 			name: 'RF Electronics',
-			identifier: 'com3',
+			identifier: 48,
+			subsystem: 'com',
+			description: 'none'
 		});
 
 		var comssubpart5 = new this.product({
 			name: 'Reflectarray',
-			identifier: 'com3',
+			identifier: 49,
+			subsystem: 'com',
+			description: 'none'
 		});
 
 		var comsssubpart1 = new this.product({
 			name: 'Analog PCB',
-			identifier: 'com4',
+			identifier: 50,
+			subsystem: 'com',
+			description: 'none'
 		});
 
 		var comsssubpart2 = new this.product({
 			name: 'RF Baseband PCB',
-			identifier: 'com4',
+			identifier: 51,
+			subsystem: 'com',
+			description: 'none'
 		});
 
 		var comsssubpart3 = new this.product({
 			name: 'Control PCB',
-			identifier: 'com4',
+			identifier: 52,
+			subsystem: 'com',
+			description: 'none'
 		});
 
 		var part6 = new this.product({
 			name: 'EPS',
-			identifier: 'eps1',
+			identifier: 53,
+			subsystem: 'eps',
+			description: 'none'
 		});
 
 		var epssubpart1 = new this.product({
 			name: 'Power Collection',
-			identifier: 'eps2',
+			identifier: 54,
+			subsystem: 'eps',
+			description: 'none'
 		});
 
 		var epssubpart2 = new this.product({
 			name: 'Power Distribution',
-			identifier: 'eps2',
+			identifier: 55,
+			subsystem: 'eps',
+			description: 'none'
 		});
 
 		var epssubpart3 = new this.product({
 			name: 'Power Storage',
-			identifier: 'eps2',
+			identifier: 56,
+			subsystem: 'eps',
+			description: 'none'
 		});
 
 		var epsssubpart1 = new this.product({
 			name: 'Solar Panels',
-			identifier: 'eps3',
+			identifier: 57,
+			subsystem: 'eps',
+			description: 'none'
 		});
 
 		var epsssubpart2 = new this.product({
 			name: 'Solar Panel Regulators',
-			identifier: 'eps3',
+			identifier: 58,
+			subsystem: 'eps',
+			description: 'none'
 		});
 
 		var epsssubpart3 = new this.product({
 			name: 'DC/DC Converters',
-			identifier: 'eps3',
+			identifier: 59,
+			subsystem: 'eps',
+			description: 'none'
 		});
 
 		var epsssubpart4 = new this.product({
 			name: 'Power Rail',
-			identifier: 'eps3',
+			identifier: 60,
+			subsystem: 'eps',
+			description: 'none'
 		});
 
 		var epsssubpart5 = new this.product({
 			name: 'Batteries',
-			identifier: 'eps3',
+			identifier: 61,
+			subsystem: 'eps',
+			description: 'none'
 		});
 
 		var epsssubpart6 = new this.product({
 			name: 'MPPT',
-			identifier: 'eps3',
+			identifier: 62,
+			subsystem: 'eps',
+			description: 'none'
 		});
 
 		var epssssubpart1 = new this.product({
 			name: 'Relay/Switches',
-			identifier: 'eps4',
+			identifier: 63,
+			subsystem: 'eps',
+			description: 'none'
 		});
 
 		var epssssubpart2 = new this.product({
 			name: 'Fuses',
-			identifier: 'eps4',
+			identifier: 64,   
+			subsystem: 'eps',
+			description: 'none'
 		});		
 
 		tier0.parent = this.object;
@@ -369,8 +500,6 @@ var ProductsFactory = function(Schema,mongoose,tree) {
 		cdhsssubpart1.parent = cdhssubpart2;
 		cdhsssubpart2.parent = cdhssubpart2;
 		cdhsssubpart3.parent = cdhssubpart2;
-
-
 
 		part3.parent = tier0;
 		pssubpart1.parent = part3;

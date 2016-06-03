@@ -368,11 +368,7 @@ section.module.parallax-4 {
 }
 
 body { 
-    padding-top: 150px; 
-}
-
-#home {
-    padding-top: 0px;
+    padding-top: 120px; 
 }
 
 #rcorners {
@@ -575,4 +571,8 @@ div.tooltip {
     border: 10px;   
     border-radius: 8px;
     /*  pointer-events: none;  This line needs to be removed */   
+}
+
+table {
+    width:100%;
 }

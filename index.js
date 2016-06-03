@@ -65,14 +65,6 @@ app.get('/products/:_id', function (req, res) {
     var resp = productfactory.getPartById(req, res);
 });
 
-app.post('/products', function (req, res) {
-    var resp = productfactory.putPart(req, res);
-});
-
-app.put('/products', function (req, res) {
-    var resp = productfactory.updatePart(req, res);
-});
-
 app.delete('/products/:_id', function (req, res) {
     var resp = productfactory.removePart(req, res);
 });
@@ -86,7 +78,11 @@ app.get('/requirements', function (req, res) {
     var resp = requirementfactory.getAll({}, res);
 });
 
-app.get('/requirements/:identifier', function (req, res) {
+app.get('/requirements/:product', function(req, res) {
+    var resp = requirementfactory.getPartByProduct(req, res);
+});
+
+app.get('/requirement/:_id', function (req, res) {
     var resp = requirementfactory.getPartById(req, res);
 });
 
@@ -125,6 +121,10 @@ app.get('/teamwork', function (req, res) {
 
 app.get('/req', function (req, res) {
     res.render('../public/tmpl/req.ejs', {title: 'Requirements' });
+});
+
+app.get('/id', function (req, res) {
+    res.render('../public/tmpl/id.ejs', {title: 'Requirements' });
 });
 
 app.get('/newreq', function (req, res) {
