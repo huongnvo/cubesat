@@ -41,15 +41,12 @@ cubesatApp.controller("newreqController", function($scope, $http) {
     }
     $scope.getData();
 
-    $scope.saveSubsystem = function(subsystem) {
-        $scope.inputSubsystem = subsystem;
-    };
-
     $scope.saveReqType = function(type) {
         $scope.inputType = type;
     };
 
-    $scope.saveProduct = function(product) {
+    $scope.saveProduct = function(subsystem, product) {
+        $scope.inputSubsystem = subsystem;
         $scope.inputProduct = product;
     }
 

@@ -4,10 +4,13 @@
 <% include navbar %>
 
 <body class="container" id="home">
-	<h1>Product Hierachy</h1>
+	<h1>Component Hierachy</h1>
 	<p class="lead">A tree view of the components list for the DUBSAT-1. Click on each node to expand the product list, and hover to see a link for each product's requirements.</p>
 
 	<hr>
+	<a type="button" class="btn btn-primary" onclick="expandAll()">Expand All</a>
+	<a type="button" class="btn btn-primary" onclick="collapseAll()">Collapse All</a>
+
 	<script type="text/javascript">
 		var getJSON = function(url, callback) {
 			var xhr = new XMLHttpRequest();
@@ -214,6 +217,36 @@
 			}
 			update(d);
 		}
+
+		function expand(d){   
+		    var children = (d.children)?d.children:d._children;
+		    if (d._children) {        
+		        d.children = d._children;
+		        d._children = null;       
+		    }
+		    if(children)
+		      children.forEach(expand);
+		}
+
+		function expandAll(){
+		    expand(root); 
+		    update(root);
+		}
+
+		function collapse(d) {
+			if (d.children) {
+				d._children = d.children;
+				d._children.forEach(collapse);
+				d.children = null;
+			}
+		}
+
+		function collapseAll(){
+		    root.children.forEach(collapse);
+		    collapse(root);
+		    update(root);
+		}
+
 	</script>
 </body>
 </html>

@@ -59,251 +59,253 @@ var ProductsFactory = function(Schema,mongoose,tree) {
 		});
 
 		var adcsssubpart2 = new this.product({
-			name: 'Attitude Sensors',
+			name: 'Estimation Algorithm',
 			identifier: 6,
 			subsystem: 'adcs',
 			description: 'none'
 		});
 
 		var adcsssubpart3 = new this.product({
-			name: 'Estimation Algorithm',
+			name: 'Magnetorquers',
 			identifier: 7,
 			subsystem: 'adcs',
 			description: 'none'
 		});
 
 		var adcsssubpart4 = new this.product({
-			name: 'Magnetorquers',
-			identifier: 8,
-			subsystem: 'adcs',
-			description: 'none'
-		});
-
-		var adcsssubpart6 = new this.product({
 			name: 'Control Algorithm',
-			identifier: 9,
+			identifier: 8,
 			subsystem: 'adcs',
 			description: 'none'
 		});
 
 		var adcsssubpart5 = new this.product({
 			name: "Reaction Wheels",
+			identifier: 9,
+			subsystem: 'adcs',
+			description: 'none'
+		});
+
+		var adcsssubpart6 = new this.product({
+			name: 'Magnetometers',
 			identifier: 10,
 			subsystem: 'adcs',
 			description: 'none'
 		});
 
-		var adcssssubpart1 = new this.product({
-			name: 'Magnetometers',
+		var adcsssubpart7 = new this.product({
+			name: 'Photodiodes',
 			identifier: 11,
 			subsystem: 'adcs',
 			description: 'none'
 		});
 
-		var adcssssubpart2 = new this.product({
-			name: 'Photodiodes',
-			identifier: 12,
-			subsystem: 'adcs',
-			description: 'none'
-		});
-
-		var adcssssubpart3 = new this.product({
+		var adcsssubpart8 = new this.product({
 			name: 'Sun Sensors',
-			identifier: 13,
-			subsystem: 'adcs',
-			description: 'none'
-		});
-
-		var adcssssubpart4 = new this.product({
-			name: 'Actuator', 
-			identifier: 14,
-			subsystem: 'adcs',
-			description: 'none'
-		});
-
-		var adcssssubpart5 = new this.product({
-			name: 'Driver',
-			identifier: 15,
-			subsystem: 'adcs',
-			description: 'none'
-		});
-
-		var adcssssubpart6 = new this.product({
-			name: 'Motor',
-			identifier: 16,
-			subsystem: 'adcs',
-			description: 'none'
-		});
-
-		var adcssssubpart7 = new this.product({
-			name: 'Controller',
-			identifier: 17,
+			identifier: 12,
 			subsystem: 'adcs',
 			description: 'none'
 		});
 
 		var part1 = new this.product({
 			name: 'CDH',
-			identifier: 18,
+			identifier: 13,
 			subsystem: 'cdh',
 			description: 'none'
 		});
 
 		var cdhsubpart1 = new this.product({
 			name: 'Main Flight Computer',
-			identifier: 19, 
+			identifier: 14, 
 			subsystem: 'cdh',
 			description: 'none'
 		});
 
 		var cdhsubpart2 = new this.product({
-			name: 'Health Monitoring',
-			identifier: 20,
+			name: 'Peripheral Subsystems',
+			identifier: 15,
 			subsystem: 'cdh',
 			description: 'none'
 		});
 
 		var cdhssubpart1 = new this.product({
 			name: 'Non-Volatile Memory',
-			identifier: 21,
-			subsystem: 'cdh',
-			description: 'none'
-		});
-
-		var cdhssubpart1b = new this.product({
-			name: 'Main Processor',
-			identifier: 22,
+			identifier: 16,
 			subsystem: 'cdh',
 			description: 'none'
 		});
 
 		var cdhssubpart2 = new this.product({
-			name: 'Microcontrollers',
-			identifier: 23,
+			name: 'Main Processor',
+			identifier: 17,
 			subsystem: 'cdh',
 			description: 'none'
 		});
 
 		var cdhssubpart3 = new this.product({
-			name: 'Sensors',
-			identifier: 24,
+			name: 'PPT Microcontroller',
+			identifier: 18,
 			subsystem: 'cdh',
 			description: 'none'
 		});
+
 
 		var cdhssubpart4 = new this.product({
+			name: 'ADCS Microcontroller',
+			identifier: 19,
+			subsystem: 'cdh',
+			description: 'none'
+		});
+
+
+		var cdhssubpart5 = new this.product({
+			name: 'COM1 Microcontroller',
+			identifier: 20,
+			subsystem: 'cdh',
+			description: 'none'
+		});
+
+		var cdhssubpart6 = new this.product({
+			name: 'COM2 Microcontroller',
+			identifier: 21,
+			subsystem: 'cdh',
+			description: 'none'
+		});
+
+		var cdhssubpart7 = new this.product({
+			name: 'EPS Microcontroller',
+			identifier: 22,
+			subsystem: 'cdh',
+			description: 'none'
+		});
+
+		var cdhssubpart8 = new this.product({
+			name: 'Sensors',
+			identifier: 23,
+			subsystem: 'cdh',
+			description: 'none'
+		});
+
+		var cdhssubpart9 = new this.product({
 			name: 'I2C Bus Line',
-			identifier: 25,
-			subsystem: 'cdh',
-			description: 'none'
-		});
-
-		var cdhsssubpart1 = new this.product({
-			name: 'PPT Controller',
-			identifier: 26,
-			subsystem: 'cdh',
-			description: 'none'
-		});
-
-		var cdhsssubpart2 = new this.product({
-			name: 'Communication Controller',			
-			identifier: 27,
-			subsystem: 'cdh',
-			description: 'none'
-		});
-
-		var cdhsssubpart3 = new this.product({
-			name: 'ADCS Controller',
-			identifier: 28,
+			identifier: 24,
 			subsystem: 'cdh',
 			description: 'none'
 		});
 
 		var part3 = new this.product({
 			name: 'PS',
-			identifier: 29,
+			identifier: 25,
 			subsystem: 'ps',
 			description: 'none'
 		});
 
 		var pssubpart1 = new this.product({
+			name: 'PPT',
+			identifier: 26,
+			subsystem: 'ps',
+			description: 'none'
+		});
+
+		var psssubpart1 = new this.product({
 			name: 'Electrodes',
+			identifier: 27,
+			subsystem: 'ps',
+			description: 'none'
+		});
+
+		var psssubpart2 = new this.product({
+			name: 'Discharge Electronics',
+			identifier: 28,
+			subsystem: 'ps',
+			description: 'none'
+		});
+
+		var psssubpart3 = new this.product({
+			name: 'Fuel Source',
+			identifier: 29,
+			subsystem: 'ps',
+			description: 'none'
+		});
+
+		var psssubpart4 = new this.product({
+			name: 'Frame/Body',
 			identifier: 30,
 			subsystem: 'ps',
 			description: 'none'
 		});
 
-		var pssubpart2 = new this.product({
-			name: 'Discharge Electronics',
+		var psssubpart5 = new this.product({
+			name: 'Igniter Electronics',
 			identifier: 31,
 			subsystem: 'ps',
 			description: 'none'
 		});
 
-		var pssubpart3 = new this.product({
-			name: 'Fuel Source',
-			identifier: 32,
-			subsystem: 'ps',
-			description: 'none'
-		});
-
-		var pssubpart4 = new this.product({
-			name: 'Frame/Body',
-			identifier: 33,
-			subsystem: 'ps',
-			description: 'none'
-		});
-
-		var pssubpart5 = new this.product({
-			name: 'Igniter Electronics',
-			identifier: 34,
-			subsystem: 'ps',
-			description: 'none'
-		});
-
-		var pssubpart6 = new this.product({
+		var psssubpart6 = new this.product({
 			name: 'Energy Storage System',
-			identifier: 35,
+			identifier: 32,
 			subsystem: 'ps',
 			description: 'none'
 		});
 
 		var part4 = new this.product({
 			name: 'TS',
-			identifier: 36,
+			identifier: 33,
 			subsystem: 'ts',
 			description: 'none'
 		});
 
 		var tssubpart1 = new this.product({
-			name: 'Thermal/Electrical Management',
-			identifier: 37,
+			name: 'Internal Management',
+			identifier: 34,
 			subsystem: 'ts',
 			description: 'none'
 		});
 
 		var tssubpart2 = new this.product({
-			name: 'CubeSat Chassis',
-			identifier: 38,
+			name: 'Structures',
+			identifier: 35,
 			subsystem: 'ts',
 			description: 'none'
 		});
 
 		var tssubpart3 = new this.product({
 			name: 'Deployables',
-			identifier: 39,
+			identifier: 36,
 			subsystem: 'ts',
 			description: 'none'
 		});
 
 		var tsssubpart1 = new this.product({
+			name: 'Thermal Management',
+			identifier: 37,
+			subsystem: 'ts',
+			description: 'none'
+		});
+
+		var tsssubpart2 = new this.product({
+			name: 'Electrical Management',
+			identifier: 38,
+			subsystem: 'ts',
+			description: 'none'
+		});
+
+		var tsssubpart3 = new this.product({
+			name: 'CubeSat Chassis',
+			identifier: 39,
+			subsystem: 'ts',
+			description: 'none'
+		});
+
+		var tsssubpart4 = new this.product({
 			name: 'Antennas',
 			identifier: 40,
 			subsystem: 'ts',
 			description: 'none'
 		});
 
-		var tsssubpart2 = new this.product({
+		var tsssubpart5 = new this.product({
 			name: 'Solar Panels',
 			identifier: 41,
 			subsystem: 'ts',
@@ -353,123 +355,95 @@ var ProductsFactory = function(Schema,mongoose,tree) {
 		});
 
 		var comssubpart4 = new this.product({
-			name: 'RF Electronics',
+			name: 'Reflectarray',
 			identifier: 48,
 			subsystem: 'com',
 			description: 'none'
 		});
 
 		var comssubpart5 = new this.product({
-			name: 'Reflectarray',
+			name: 'Analog PCB',
 			identifier: 49,
 			subsystem: 'com',
 			description: 'none'
 		});
 
-		var comsssubpart1 = new this.product({
-			name: 'Analog PCB',
+		var comssubpart6 = new this.product({
+			name: 'RF Baseband PCB',
 			identifier: 50,
 			subsystem: 'com',
 			description: 'none'
 		});
 
-		var comsssubpart2 = new this.product({
-			name: 'RF Baseband PCB',
-			identifier: 51,
-			subsystem: 'com',
-			description: 'none'
-		});
-
-		var comsssubpart3 = new this.product({
+		var comssubpart7 = new this.product({
 			name: 'Control PCB',
-			identifier: 52,
+			identifier: 51,
 			subsystem: 'com',
 			description: 'none'
 		});
 
 		var part6 = new this.product({
 			name: 'EPS',
-			identifier: 53,
+			identifier: 52,
 			subsystem: 'eps',
 			description: 'none'
 		});
 
 		var epssubpart1 = new this.product({
 			name: 'Power Collection',
-			identifier: 54,
+			identifier: 53,
 			subsystem: 'eps',
 			description: 'none'
 		});
 
 		var epssubpart2 = new this.product({
 			name: 'Power Distribution',
-			identifier: 55,
+			identifier: 54,
 			subsystem: 'eps',
 			description: 'none'
 		});
 
 		var epssubpart3 = new this.product({
 			name: 'Power Storage',
-			identifier: 56,
+			identifier: 55,
 			subsystem: 'eps',
 			description: 'none'
 		});
 
 		var epsssubpart1 = new this.product({
 			name: 'Solar Panels',
-			identifier: 57,
+			identifier: 56,
 			subsystem: 'eps',
 			description: 'none'
 		});
 
 		var epsssubpart2 = new this.product({
-			name: 'Solar Panel Regulators',
-			identifier: 58,
+			name: 'Energy Extraction Method',
+			identifier: 57,
 			subsystem: 'eps',
 			description: 'none'
 		});
 
 		var epsssubpart3 = new this.product({
 			name: 'DC/DC Converters',
-			identifier: 59,
+			identifier: 58,
 			subsystem: 'eps',
 			description: 'none'
 		});
 
 		var epsssubpart4 = new this.product({
 			name: 'Power Rail',
-			identifier: 60,
+			identifier: 59,
 			subsystem: 'eps',
 			description: 'none'
 		});
 
 		var epsssubpart5 = new this.product({
 			name: 'Batteries',
-			identifier: 61,
+			identifier: 60,
 			subsystem: 'eps',
 			description: 'none'
 		});
-
-		var epsssubpart6 = new this.product({
-			name: 'MPPT',
-			identifier: 62,
-			subsystem: 'eps',
-			description: 'none'
-		});
-
-		var epssssubpart1 = new this.product({
-			name: 'Relay/Switches',
-			identifier: 63,
-			subsystem: 'eps',
-			description: 'none'
-		});
-
-		var epssssubpart2 = new this.product({
-			name: 'Fuses',
-			identifier: 64,   
-			subsystem: 'eps',
-			description: 'none'
-		});		
 
 		tier0.parent = this.object;
 		part2.parent = tier0;
@@ -477,44 +451,44 @@ var ProductsFactory = function(Schema,mongoose,tree) {
 		adcssubpart2.parent = part2;
 		adcsssubpart1.parent = adcssubpart1;
 		adcsssubpart2.parent = adcssubpart1;
-		adcsssubpart3.parent = adcssubpart1;
+		adcsssubpart6.parent = adcssubpart1;
+		adcsssubpart7.parent = adcssubpart1;
+		adcsssubpart8.parent = adcssubpart1;
+		adcsssubpart3.parent = adcssubpart2;
 		adcsssubpart4.parent = adcssubpart2;
-		adcsssubpart6.parent = adcssubpart2;
 		adcsssubpart5.parent = adcssubpart2;
-		adcssssubpart1.parent = adcsssubpart2;
-		adcssssubpart2.parent = adcsssubpart2;
-		adcssssubpart3.parent = adcsssubpart2;
-		adcssssubpart4.parent = adcsssubpart4;
-		adcssssubpart5.parent = adcsssubpart4;
-		adcssssubpart6.parent = adcsssubpart5;
-		adcssssubpart7.parent = adcsssubpart5;
 
 		part1.parent = tier0;
 		cdhsubpart1.parent = part1;
 		cdhsubpart2.parent = part1;
 		cdhssubpart1.parent = cdhsubpart1;
-		cdhssubpart1b.parent = cdhsubpart1;
-		cdhssubpart2.parent = cdhsubpart2;
+		cdhssubpart2.parent = cdhsubpart1;
 		cdhssubpart3.parent = cdhsubpart2;
 		cdhssubpart4.parent = cdhsubpart2;
-		cdhsssubpart1.parent = cdhssubpart2;
-		cdhsssubpart2.parent = cdhssubpart2;
-		cdhsssubpart3.parent = cdhssubpart2;
+		cdhssubpart5.parent = cdhsubpart2;
+		cdhssubpart6.parent = cdhsubpart2;
+		cdhssubpart7.parent = cdhsubpart2;
+		cdhssubpart8.parent = cdhsubpart2;		
+		cdhssubpart9.parent = cdhsubpart2;
 
 		part3.parent = tier0;
 		pssubpart1.parent = part3;
-		pssubpart2.parent = part3;
-		pssubpart3.parent = part3;
-		pssubpart4.parent = part3;
-		pssubpart5.parent = part3;
-		pssubpart6.parent = part3;
+		psssubpart1.parent = pssubpart1;		
+		psssubpart2.parent = pssubpart1;
+		psssubpart3.parent = pssubpart1;
+		psssubpart4.parent = pssubpart1;
+		psssubpart5.parent = pssubpart1;
+		psssubpart6.parent = pssubpart1;
 
 		part4.parent = tier0;		
 		tssubpart1.parent = part4;
 		tssubpart2.parent = part4;
 		tssubpart3.parent = part4;
-		tsssubpart1.parent = tssubpart3;
-		tsssubpart2.parent = tssubpart3;
+		tsssubpart1.parent = tssubpart1;
+		tsssubpart2.parent = tssubpart1;
+		tsssubpart3.parent = tssubpart2;
+		tsssubpart4.parent = tssubpart3;
+		tsssubpart5.parent = tssubpart3;
 
 		part5.parent = tier0;
 		comsubpart1.parent = part5;
@@ -524,9 +498,8 @@ var ProductsFactory = function(Schema,mongoose,tree) {
 		comssubpart3.parent = comsubpart2;
 		comssubpart4.parent = comsubpart2;
 		comssubpart5.parent = comsubpart2;
-		comsssubpart1.parent = comssubpart4;
-		comsssubpart2.parent = comssubpart4;
-		comsssubpart3.parent = comssubpart4;
+		comssubpart6.parent = comsubpart2;
+		comssubpart7.parent = comsubpart2;
 
 		part6.parent = tier0;
 		epssubpart1.parent = part6;
@@ -537,9 +510,6 @@ var ProductsFactory = function(Schema,mongoose,tree) {
 		epsssubpart3.parent = epssubpart2;
 		epsssubpart4.parent = epssubpart2;
 		epsssubpart5.parent = epssubpart3;
-		epsssubpart6.parent = epssubpart3;
-		epssssubpart1.parent = epsssubpart4;
-		epssssubpart2.parent = epsssubpart4;
 
 		var args = [{
 			filters: {'name': 'CubeSat'},
@@ -549,59 +519,62 @@ var ProductsFactory = function(Schema,mongoose,tree) {
 
 		this.object.save(function() {
 			tier0.save(function() {
-				part2.save(function() {
-					adcssubpart1.save(function() {
-						adcsssubpart1.save();
-						adcsssubpart2.save(function() {
-							adcssssubpart1.save();
-							adcssssubpart2.save();
-							adcssssubpart3.save();
-						});
-						adcsssubpart3.save();
-					});
-					adcssubpart2.save(function() {
-						adcsssubpart4.save(function() {
-							adcssssubpart4.save();
-							adcssssubpart5.save();
-						});
-						adcsssubpart6.save();
-						adcsssubpart5.save(function() {
-							adcssssubpart6.save();
-							adcssssubpart7.save();
-						});
-					});
-				});
 				part1.save(function() {
 					cdhsubpart1.save(function() {
 						cdhssubpart1.save();
-						cdhssubpart1b.save();
+						cdhssubpart2.save();
 					});
 					cdhsubpart2.save(function() {
-						cdhssubpart2.save(function() {
-							cdhsssubpart1.save();
-							cdhsssubpart2.save();
-							cdhsssubpart3.save();
-						});
 						cdhssubpart3.save();
 						cdhssubpart4.save();
+						cdhssubpart5.save();
+						cdhssubpart6.save();
+						cdhssubpart7.save();
+						cdhssubpart8.save();
+						cdhssubpart9.save();
 					});
 				});
-				part3.save(function() {
-					pssubpart1.save();
-					pssubpart2.save();
-					pssubpart3.save();
-					pssubpart4.save();
-					pssubpart5.save();
-					pssubpart6.save();
+
+				part2.save(function() {
+					adcssubpart1.save(function() {
+						adcsssubpart1.save();
+						adcsssubpart2.save();
+						adcsssubpart6.save();
+						adcsssubpart7.save();
+						adcsssubpart8.save();
+					});
+					adcssubpart2.save(function() {
+						adcsssubpart3.save();
+						adcsssubpart4.save();
+						adcsssubpart5.save();
+					});
 				});
+
+				part3.save(function() {
+					pssubpart1.save(function() {
+						psssubpart1.save();
+						psssubpart2.save();
+						psssubpart3.save();
+						psssubpart4.save();
+						psssubpart5.save();
+						psssubpart6.save();
+					});
+				});
+
 				part4.save(function() {
-					tssubpart1.save();
-					tssubpart2.save();
-					tssubpart3.save(function() {
+					tssubpart1.save(function() {
 						tsssubpart1.save();
 						tsssubpart2.save();
 					});
+					tssubpart2.save(function() {
+						tsssubpart3.save();
+					});
+					tssubpart3.save(function() {
+						tsssubpart4.save();
+						tsssubpart5.save();
+					});
 				});
+
 				part5.save(function() {
 					comsubpart1.save(function() {
 						comssubpart1.save();
@@ -609,14 +582,13 @@ var ProductsFactory = function(Schema,mongoose,tree) {
 					});
 					comsubpart2.save(function() {
 						comssubpart3.save();
-						comssubpart4.save(function() {
-							comsssubpart1.save();
-							comsssubpart2.save();
-							comsssubpart3.save();
-						});
+						comssubpart4.save();
 						comssubpart5.save();
+						comssubpart6.save();
+						comssubpart7.save();
 					});
 				});
+
 				part6.save(function() {
 					epssubpart1.save(function() {
 						epsssubpart1.save();
@@ -624,14 +596,10 @@ var ProductsFactory = function(Schema,mongoose,tree) {
 					});
 					epssubpart2.save(function() {
 						epsssubpart3.save();
-						epsssubpart4.save(function() {
-							epssssubpart1.save();
-							epssssubpart2.save();
-						});
+						epsssubpart4.save();
 					});
 					epssubpart3.save(function() {
 						epsssubpart5.save();
-						epsssubpart6.save();
 					});
 				});
 			});

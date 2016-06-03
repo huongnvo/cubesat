@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html data-ng-app="cubesatApp">
+<% include header %>
+<% include navbar %>
+
+<body class="container" data-ng-controller="idController">
+    <h1>Requirements Specification:&nbsp&nbsp{{requirement.name}}</h1>
+    <br>
+    <ul class="list-group">
+        <li class="list-group-item"><strong>Name:</strong> {{requirement.name}}</li>
+        <li class="list-group-item"><strong>Subsystem:</strong> {{requirement.subsystem}}</li>
+        <li class="list-group-item"><strong>Type:</strong> {{requirement.type}}</li>
+        <li class="list-group-item"><strong>Description:</strong> {{requirement.description}}</li>
+        <li class="list-group-item"><strong>Rationalization:</strong> {{requirement.rationalization}}</li>
+        <li class="list-group-item"><strong>Verification:</strong> {{requirement.verification}}</li>
+        <li class="list-group-item"><strong>Product ID:</strong> {{requirement.product}}</li>
+    </ul>
+    <br>
+    <div class="row">
+        <div class="col-lg-12">
+            <a type="button" class="btn btn-primary btn-lg" ng-click="goBack(requirement)"><h4>View Corresponding Component</h4></a>
+        </div>
+    </div>
+    <hr>
+
+
+</body>
+
+</html>

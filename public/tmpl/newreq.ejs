@@ -5,6 +5,7 @@
 
 <body class="container" data-ng-controller="newreqController">
     <h1>Post a New Requirement</h1>
+    <p class="lead">Fill out the form to add a new requirement to a corresponding component.</p>
     <hr>
     <div class="row">
         <div class="col-lg-12">
@@ -24,18 +25,6 @@
                 <input type="text" class="form-control" placeholder="e.g., The ADCS will be verified through..." ng-model="inputVerification"/>
             <div class="divider"></div>
 
-            <h3>Subsystem:</h3>
-                <select multiple class="form-control" size="7">
-                    <option ng-click="saveSubsystem('dubs')">Top-Level Mission Requirements</option>
-                    <option ng-click="saveSubsystem('adcs')">Attitude Determination and Control Subsystem</option>
-                    <option ng-click="saveSubsystem('cdh')">Command and Data Handling Subsystem</option>
-                    <option ng-click="saveSubsystem('eps')">Electrical Power Subsystem</option>
-                    <option ng-click="saveSubsystem('ps')">Propulsion Subsystem</option>
-                    <option ng-click="saveSubsystem('ts')">Thermal and Structures Subsystem</option>
-                    <option ng-click="saveSubsystem('com')">Communication Subsystem</option>
-                </select>
-            <div class="divider"></div>
-
             <h3>Type of Requirement:</h3>
                 <select multiple class="form-control" size="6">
                     <option ng-click="saveReqType('State')">State/Mode</option>
@@ -47,7 +36,7 @@
                 </select>
             <div class="divider"></div>
 
-            <h3>Product Tracing:</h3>
+            <h3>Component Tracing:</h3>
             <div>
                 <ul class="nav nav-tabs">
                     <li class="active"><a href="#tab1">Top-Level</a></li>
@@ -62,43 +51,43 @@
             <br>
             <section id="tab7" class="tab-content hide">
                 <select multiple class="form-control" size="6">
-                    <option ng-click="saveProduct(product._id)" ng-repeat ="product in products | orderBy:predicate:reverse" ng-if="product.subsystem == 'com'">{{product.name}}</option>
+                    <option ng-click="saveProduct(product.subsystem, product._id)" ng-repeat ="product in products | orderBy:predicate:reverse" ng-if="product.subsystem == 'com'">{{product.name}}</option>
                 </select>
             </section>
 
             <section id="tab6" class="tab-content hide">
                 <select multiple class="form-control" size="6">
-                    <option ng-click="saveProduct(product._id)" ng-repeat ="product in products | orderBy:predicate:reverse" ng-if="product.subsystem == 'ts'">{{product.name}}</option>
+                    <option ng-click="saveProduct(product.subsystem, product._id)" ng-repeat ="product in products | orderBy:predicate:reverse" ng-if="product.subsystem == 'ts'">{{product.name}}</option>
                 </select>
             </section>
 
             <section id="tab5" class="tab-content hide">
                 <select multiple class="form-control" size="6">
-                    <option ng-click="saveProduct(product._id)" ng-repeat ="product in products | orderBy:predicate:reverse" ng-if="product.subsystem == 'ps'">{{product.name}}</option>
+                    <option ng-click="saveProduct(product.subsystem, product._id)" ng-repeat ="product in products | orderBy:predicate:reverse" ng-if="product.subsystem == 'ps'">{{product.name}}</option>
                 </select>
             </section>
 
             <section id="tab4" class="tab-content hide">
                 <select multiple class="form-control" size="6">
-                    <option ng-click="saveProduct(product._id)" ng-repeat ="product in products | orderBy:predicate:reverse" ng-if="product.subsystem == 'eps'">{{product.name}}</option>
+                    <option ng-click="saveProduct(product.subsystem, product._id)" ng-repeat ="product in products | orderBy:predicate:reverse" ng-if="product.subsystem == 'eps'">{{product.name}}</option>
                 </select>
             </section>
 
             <section id="tab3" class="tab-content hide">
                 <select multiple class="form-control" size="6">
-                    <option ng-click="saveProduct(product._id)" ng-repeat ="product in products | orderBy:predicate:reverse" ng-if="product.subsystem == 'cdh'">{{product.name}}</option>
+                    <option ng-click="saveProduct(product.subsystem, product._id)" ng-repeat ="product in products | orderBy:predicate:reverse" ng-if="product.subsystem == 'cdh'">{{product.name}}</option>
                 </select>
             </section>
 
             <section id="tab2" class="tab-content hide">
                 <select multiple class="form-control" size="6">
-                    <option ng-click="saveProduct(product._id)" ng-repeat ="product in products | orderBy:predicate:reverse" ng-if="product.subsystem == 'adcs'">{{product.name}}</option>
+                    <option ng-click="saveProduct(product.subsystem, product._id)" ng-repeat ="product in products | orderBy:predicate:reverse" ng-if="product.subsystem == 'adcs'">{{product.name}}</option>
                 </select>
             </section>
 
             <section id="tab1" class="tab-content active">
                 <select multiple class="form-control" size="6">
-                    <option ng-click="saveProduct(product._id)" ng-repeat ="product in products | orderBy:predicate:reverse" ng-if="product.subsystem == 'dubs'">{{product.name}}</option>
+                    <option ng-click="saveProduct(product.subsystem, product._id)" ng-repeat ="product in products | orderBy:predicate:reverse" ng-if="product.subsystem == 'dubs'">{{product.name}}</option>
                 </select>
             </section> 
             <div class="divider"></div>

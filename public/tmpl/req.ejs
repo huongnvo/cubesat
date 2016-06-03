@@ -5,6 +5,7 @@
 
 <body class="container" data-ng-controller="reqController">
     <h1>Requirements Specification:&nbsp&nbsp{{title}} ({{length}})</h1>
+    <p class="lead">Click on each requirement/component to see more details.</p>
     <hr>
     <table class="table table-hover table-striped">
         <thead>
@@ -34,8 +35,9 @@
                 <td ng-click="goToReq(requirement)" data-whatever={{requirement}}>{{requirement.name}}</td>
                 <td ng-click="goToReq(requirement)" data-whatever={{requirement}}>{{requirement.description}}</td>
                 <td ng-click="goToReq(requirement)" data-whatever={{requirement}}>{{requirement.type}}</td>
-                <td class="text-right"><a ng-hide="requirement.verification == '' || requirement.description == '' || requirement.rationalization == ''" type="button" class="btn btn-xs btn-warning">Missing Info</a>
-                    <a ng-hide="requirement.verification != '' && requirement.description != '' && requirement.rationalization != ''" type="button" class="btn btn-xs btn-success">Requirement Complete</a>
+                <td class="text-right">
+                    <a ng-hide="requirement.verification && requirement.description && requirement.rationalization" type="button" class="btn btn-xs btn-warning">Missing Info</a>
+                    <a ng-hide="!requirement.verification || !requirement.description || !requirement.rationalization" type="button" class="btn btn-xs btn-success">Requirement Complete</a>
                     <a type="button" class="btn btn-xs btn-warning">Verification Incomplete</a>
                     <!-- <a type="button" class="btn btn-xs btn-success">Verification Complete</a> -->
                     <a type="button" class="btn btn-xs btn-danger" ng-click="deletePart(requirement)"><span class="glyphicon glyphicon-trash" aria-hidden="true"></a> 
@@ -79,7 +81,7 @@
         </div>
         <div class="col-lg-6">
             <div ng-hide="id == ''" class="panel panel-success">
-                <div class="panel-heading"><h4>Flow-Down Components</h4></div>
+                <div class="panel-heading"><h4>Flow-Down Component(s)</h4></div>
                 <table class="table table-hover table-striped">
                     <thead>
                         <tr>
