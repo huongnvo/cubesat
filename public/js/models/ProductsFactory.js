@@ -66,42 +66,42 @@ var ProductsFactory = function(Schema,mongoose,tree) {
 		});
 
 		var adcsssubpart3 = new this.product({
-			name: 'Magnetorquers',
+			name: 'Magnetometers',
 			identifier: 7,
 			subsystem: 'adcs',
 			description: 'none'
 		});
 
 		var adcsssubpart4 = new this.product({
-			name: 'Control Algorithm',
+			name: 'Photodiodes',
 			identifier: 8,
 			subsystem: 'adcs',
 			description: 'none'
 		});
 
 		var adcsssubpart5 = new this.product({
-			name: "Reaction Wheels",
+			name: 'Sun Sensors',
 			identifier: 9,
 			subsystem: 'adcs',
 			description: 'none'
 		});
 
 		var adcsssubpart6 = new this.product({
-			name: 'Magnetometers',
+			name: 'Magnetorquers',
 			identifier: 10,
 			subsystem: 'adcs',
 			description: 'none'
 		});
 
 		var adcsssubpart7 = new this.product({
-			name: 'Photodiodes',
+			name: 'Control Algorithm',
 			identifier: 11,
 			subsystem: 'adcs',
 			description: 'none'
 		});
 
 		var adcsssubpart8 = new this.product({
-			name: 'Sun Sensors',
+			name: "Reaction Wheels",
 			identifier: 12,
 			subsystem: 'adcs',
 			description: 'none'
@@ -451,12 +451,13 @@ var ProductsFactory = function(Schema,mongoose,tree) {
 		adcssubpart2.parent = part2;
 		adcsssubpart1.parent = adcssubpart1;
 		adcsssubpart2.parent = adcssubpart1;
-		adcsssubpart6.parent = adcssubpart1;
-		adcsssubpart7.parent = adcssubpart1;
-		adcsssubpart8.parent = adcssubpart1;
-		adcsssubpart3.parent = adcssubpart2;
-		adcsssubpart4.parent = adcssubpart2;
-		adcsssubpart5.parent = adcssubpart2;
+		adcsssubpart3.parent = adcssubpart1;
+		adcsssubpart4.parent = adcssubpart1;
+		adcsssubpart5.parent = adcssubpart1;
+		adcsssubpart6.parent = adcssubpart2;
+		adcsssubpart7.parent = adcssubpart2;
+		adcsssubpart8.parent = adcssubpart2;
+
 
 		part1.parent = tier0;
 		cdhsubpart1.parent = part1;
@@ -539,14 +540,14 @@ var ProductsFactory = function(Schema,mongoose,tree) {
 					adcssubpart1.save(function() {
 						adcsssubpart1.save();
 						adcsssubpart2.save();
-						adcsssubpart6.save();
-						adcsssubpart7.save();
-						adcsssubpart8.save();
-					});
-					adcssubpart2.save(function() {
 						adcsssubpart3.save();
 						adcsssubpart4.save();
 						adcsssubpart5.save();
+					});
+					adcssubpart2.save(function() {
+						adcsssubpart6.save();
+						adcsssubpart7.save();
+						adcsssubpart8.save();
 					});
 				});
 

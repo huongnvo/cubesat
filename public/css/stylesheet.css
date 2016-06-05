@@ -536,6 +536,12 @@ body {
     display:inline-block;
 }
 
+.dividerhuge{
+    margin-bottom:600px;
+    height:auto;
+    display:inline-block;
+}
+
 .modal {
     display: block;
 }
@@ -575,4 +581,140 @@ div.tooltip {
 
 table {
     width:100%;
+}
+
+#sun {
+    position: absolute;
+    /* Positions the top-left corner of the image to be *
+    /* in the middle of the box */
+    top: 77%;
+    left: 48%;
+    
+    /* Play with these numbers to see what it does */
+    height: 250px;
+    width: 250px;
+    margin-top: -100px; 
+    margin-left: -100px;
+    
+    border-color: white;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 50%;
+}
+
+#earth {
+    /* Style your earth */
+    position: absolute; 
+    top: 20%; 
+    left: 90%; 
+    height: 50px;
+    width: 50px;
+    margin-left: -25px;
+    margin-top: -25px;
+}
+
+#earth-orbit {
+    /* For Section #2 */
+    position: absolute;
+    top: 80%;
+    left: 50%;
+
+    width: 500px;
+    height: 500px;
+    margin-top: -250px;
+    margin-left: -250px;
+
+    border-width: 2px;
+    border-style: dotted;
+    border-color: black;
+    border-radius: 50%;
+  
+    -webkit-animation: spin-right 18s linear infinite;
+     -moz-animation: spin-right 18s linear infinite;
+      -ms-animation: spin-right 18s linear infinite;
+       -o-animation: spin-right 18s linear infinite;
+          animation: spin-right 18s linear infinite;
+}
+
+#moon-orbit {
+    position: relative; 
+    top: 58%;
+    left: 128%;   
+    width: 120px;
+    height: 120px;
+    margin-top: -250px;
+    margin-left: -250px;
+    border-width: 2px;
+    border-style: dotted;
+    border-color: gray;
+    border-radius: 50%;
+    
+    -webkit-animation: spin-right  3s linear infinite;
+     -moz-animation: spin-right  3s linear infinite;
+      -ms-animation: spin-right  3s linear infinite;
+       -o-animation: spin-right  3s linear infinite;
+          animation: spin-right  3s linear infinite;
+}
+
+@-webkit-keyframes spin-right {
+  100% {
+    -webkit-transform: rotate(360deg);
+       -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+         -o-transform: rotate(360deg);
+            transform: rotate(360deg);
+    }
+}
+
+@keyframes spin-right {
+  100% {
+    -webkit-transform: rotate(360deg);
+       -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+         -o-transform: rotate(360deg);
+            transform: rotate(360deg);
+    }
+}
+
+#moon {
+    height: 20px; 
+    width: 20px; 
+    border-radius: 0%; 
+    position: relative; 
+    top: -10%; 
+    left: 50%;
+    margin: 0;
+}
+
+#moon img {
+    height: 40px; 
+    width: 40px; 
+    position: absolute;
+    left: 0;
+    -webkit-transition: opacity 0.1s ease-in-out;
+    -moz-transition: opacity 0.1s ease-in-out;
+    -o-transition: opacity 0.1s ease-in-out;
+    transition: opacity 0.1s ease-in-out;
+}
+
+#moon img.transparent {
+    opacity:0;
+}
+
+@keyframes cf3FadeInOut {
+    0% {
+        opacity:1;
+    }
+        
+    100% {
+        opacity:0;
+    }
+}
+
+#moon img.top {
+    animation-name: cf3FadeInOut;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-duration: 1.5s;
+    animation-direction: alternate;
 }

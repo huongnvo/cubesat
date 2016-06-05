@@ -43,12 +43,21 @@ cubesatApp.controller("newreqController", function($scope, $http) {
 
     $scope.saveReqType = function(type) {
         $scope.inputType = type;
+        if ($scope.inputType == '') {
+            $scope.inputType = type;
+        }
     };
 
     $scope.saveProduct = function(subsystem, product) {
         $scope.inputSubsystem = subsystem;
+        if ($scope.inputSubsystem == '') {
+            $scope.inputSubsystem = subsystem;
+        }
         $scope.inputProduct = product;
-    }
+        if ($scope.inputProduct == '') {
+            $scope.inputProduct = product;
+        }
+    };
 
     $(document).ready(function() {
         $('.nav-tabs > li > a').click(function(event){

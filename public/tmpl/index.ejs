@@ -8,8 +8,8 @@
 	<p class="lead">A tree view of the components list for the DUBSAT-1. Click on each node to expand the product list, and hover to see a link for each product's requirements.</p>
 
 	<hr>
-	<a type="button" class="btn btn-primary" onclick="expandAll()">Expand All</a>
-	<a type="button" class="btn btn-primary" onclick="collapseAll()">Collapse All</a>
+	<a type="button" class="btn btn-primary" onclick="expandAll()"><span class="glyphicon glyphicon-plus"></span> Expand All</a>
+	<a type="button" class="btn btn-primary" onclick="collapseAll()"><span class="glyphicon glyphicon-minus"></span> Collapse All</a>
 
 	<script type="text/javascript">
 		var getJSON = function(url, callback) {
@@ -110,7 +110,8 @@
 									.style("opacity", .9);
 								div .html(
 									'<a href="/req?' + d._id + '"">' +   
-									"View requirements for: " + d.name +
+									"Description: " + d.description + "<br>" + 
+									"Click for requirements." + 
 									"</a>"
 								)
 								.style("left", (d3.event.pageX + 15) + "px")
@@ -219,7 +220,7 @@
 		}
 
 		function expand(d){   
-		    var children = (d.children)?d.children:d._children;
+		    var children = (d.children) ? d.children : d._children;
 		    if (d._children) {        
 		        d.children = d._children;
 		        d._children = null;       
@@ -248,5 +249,7 @@
 		}
 
 	</script>
+	<hr>
+
 </body>
 </html>

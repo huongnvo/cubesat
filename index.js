@@ -132,7 +132,31 @@ app.get('/newreq', function (req, res) {
 });
 
 app.get('/prodlist', function (req, res) {
-    res.render('../public/tmpl/prodlist.ejs', {title: 'Product Hierachy'});
+    res.render('../public/tmpl/prodlist.ejs', {title: 'Component Hierachy'});
+});
+
+app.get('/volume', function (req, res) {
+    res.render('../public/tmpl/volume.ejs', {title: 'Volume Budget'});
+});
+
+app.get('/mass', function (req, res) {
+    res.render('../public/tmpl/mass.ejs', {title: 'Mass Budget'});
+});
+
+app.get('/power', function (req, res) {
+    res.render('../public/tmpl/power.ejs', {title: 'Power Budget'});
+});
+
+app.get('/money', function (req, res) {
+    res.render('../public/tmpl/money.ejs', {title: 'Money Budget'});
+});
+
+app.get('/progress', function (req, res) {
+    res.render('../public/tmpl/progress.ejs', {title: 'Progress Tracking'});
+});
+
+app.get('/conops', function (req, res) {
+    res.render('../public/tmpl/conops.ejs', {title: 'Concepts of Operation'});
 });
 
 app.listen(port);
